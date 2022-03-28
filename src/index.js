@@ -1,7 +1,21 @@
-console.log("Как интересно!");
-const heading = document.createElement('h1');
-heading.textContent = 'Как интересно!';
+class Game {
+    name = 'Violin Charades'
+}
+const myGame = new Game()
 
-// добавляем заголовок в DOM
-const root = document.querySelector('#root');
-root.append(heading);
+const p = document.createElement('p')
+p.textContent = `I like ${myGame.game}.`
+
+const heading = document.createElement('h1')
+heading.textContent = `Как интереснО!!!!!!`
+
+const root = document.querySelector('#root')
+root.append(heading, p)
+
+
+console.log("Как интересно!");
+
+
+
+
+
