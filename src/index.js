@@ -1,4 +1,5 @@
 import example from './images/jsfirst.jpg'
+import Example from './images/03.svg'
 
 class Game {
     name = 'Violin Charades'
