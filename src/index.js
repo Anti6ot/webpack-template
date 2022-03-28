@@ -1,3 +1,5 @@
+import example from './images/jsfirst.jpg'
+
 class Game {
     name = 'Violin Charades'
 }
@@ -14,6 +16,7 @@ root.append(heading, p)
 
 
 console.log("Как интересно!");
+
 
 
 
