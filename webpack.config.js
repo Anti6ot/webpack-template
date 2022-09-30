@@ -1,5 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const webpack = require('webpack')
 
 module.exports = {
     entry: {
@@ -15,5 +17,39 @@ module.exports = {
             template: path.resolve(__dirname, './src/template.html'), // шаблон
             filename: 'index.html', // название выходного файла
         }),
+        new CleanWebpackPlugin(),
+    ],
+    module: {
+        rules: [
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: ['babel-loader'],
+            },
+            {
+                test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
+                type: 'asset/resource',
+            },
+            {
+                test: /\.(woff(2)?|eot|ttf|otf|svg|)$/,
+                type: 'asset/inline',
+            },
+            {
+                test: /\.(scss|css)$/,
+                use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+            },
+        ],
+    },
+
+    mode: 'development',
+    devServer: {
+        port: 9000,
+        hot: true,
+        static: {
+          directory: path.join(__dirname, './dist'),
+        },
+      },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),
     ],
 }
